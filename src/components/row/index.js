@@ -29,8 +29,6 @@ export class Row extends Component {
   getCarouselItems(item, index) {
     const { id, name, to, title, age, duration, tags } = item;
 
-    debugger;
-
     return (
       <li key={id} className="section__item" style={{ "--order": `${index}` }}>
         <label htmlFor={id}>

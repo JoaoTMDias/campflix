@@ -7,12 +7,7 @@ export const RELATED = {
     {
       id: "c19405b7-8fa8-47d7-a4af-63a5498100f7",
       name: "related-movies",
-      to: {
-        pathname: MOVIE_DETAILS,
-        params: {
-          id: "c19405b7-8fa8-47d7-a4af-63a5498100f7",
-        },
-      },
+      to: `${MOVIE_DETAILS}/c19405b7-8fa8-47d7-a4af-63a5498100f7`,
       title: "American Sniper",
       age: "16",
       duration: "2h12m",
