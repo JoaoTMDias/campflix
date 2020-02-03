@@ -1,2 +1,0 @@
-# campflix
-Created with CodeSandbox
