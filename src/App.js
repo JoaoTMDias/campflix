@@ -8,23 +8,19 @@ import "./assets/styles/index.scss";
 
 export default function App() {
   return (
-    <div className="App">
-      <Router history={history}>
-        <main>
-          <Switch>
-            <Route
-              exact
-              path={WELCOMEPAGE_URL}
-              render={props => <WelcomePage {...props} />}
-            />
-            <Route
-              exact
-              path={HOMEPAGE_URL}
-              render={props => <Homepage {...props} />}
-            />
-          </Switch>
-        </main>
-      </Router>
-    </div>
+    <Router history={history}>
+      <Switch>
+        <Route
+          exact
+          path={WELCOMEPAGE_URL}
+          render={props => <WelcomePage {...props} />}
+        />
+        <Route
+          exact
+          path={HOMEPAGE_URL}
+          render={props => <Homepage {...props} />}
+        />
+      </Switch>
+    </Router>
   );
 }

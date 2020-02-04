@@ -10,6 +10,7 @@ export const Container = styled.article`
   flex-direction: column;
   justify-content: flex-end;
   align-items: flex-start;
+  z-index: 0;
 
   .hero {
     &__content,
@@ -103,7 +104,7 @@ export const Container = styled.article`
       background-image: linear-gradient(
         to bottom,
         hsla(15, 40%, 2%, 0),
-        hsla(15, 40%, 2%, 0.8)
+        hsla(15, 40%, 2%, 1)
       );
     }
   }

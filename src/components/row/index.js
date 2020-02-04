@@ -1,6 +1,24 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { KEYCODES } from "../../helpers";
+import * as PropTypes from "prop-types";
+import {
+  Title,
+  Carousel,
+  Section,
+  Item,
+  Label,
+  Controls,
+  Figure,
+} from "./styles";
+import { history } from "../../data/react-router.d";
 
+/**
+ * Movies Row
+ *
+ * @export
+ * @class Row
+ * @extends {Component}
+ */
 export class Row extends Component {
   /**
    * Renders a list of tags
@@ -19,24 +37,81 @@ export class Row extends Component {
   }
 
   /**
+   * Handles the click on Input
+   *
+   * @param {React.MouseEvent<HTMLInputElement, MouseEvent>} event
+   * @param {string} to
+   * @memberof Row
+   */
+  _onClickOnInput(event, to) {
+    event.preventDefault();
+
+    this._navigateToPage(to);
+  }
+
+  /**
+   * Handles the key press on Input
+   *
+   * @param {React.KeyboardEvent<HTMLInputElement>} event
+   * @param {string} to
+   * @memberof Row
+   */
+  _onKeyUpOnInput(event, to) {
+    switch (event.keyCode) {
+      case KEYCODES.ENTER:
+      case KEYCODES.SPACE:
+        this._navigateToPage(to);
+        break;
+
+      case KEYCODES.ARROW_LEFT:
+      case KEYCODES.ARROW_RIGHT:
+      default:
+        break;
+    }
+  }
+
+  /**
+   * Navigate to another page
+   *
+   * @param {string} to
+   * @memberof Row
+   */
+  _navigateToPage(to) {
+    const { history } = this.props;
+
+    if (history) {
+      history.push(to);
+    }
+  }
+
+  /**
    *
    * @param {*} item
    * @param {*} index
    */
   getCarouselItems(item, index) {
-    const { id, name, to, title, age, duration, tags } = item;
+    const { id, name, to, title, background, age, duration, tags } = item;
 
     return (
-      <li key={id} className="section__item" style={{ "--order": `${index}` }}>
-        <label htmlFor={id}>
+      <Item
+        key={id}
+        className="section__item"
+        style={{ "--order": `${index}` }}
+      >
+        <Label htmlFor={id}>
           <input
             type="radio"
             id={id}
             name={name}
-            className="section__item__input"
+            className="sr-only"
             value=""
+            onClick={event => this._onClickOnInput(event, to)}
+            onKeyUp={event => this._onKeyUpOnInput(event, to)}
           />
-          <Link to={to} className="section__item__controls">
+          <Figure>
+            <img src={background.src} alt={background.alt} />
+          </Figure>
+          <Controls className="section__item__controls">
             <figure className="controls__icon" />
             <h4 className="controls__title">{title}</h4>
             <div className="controls__metadata">
@@ -44,9 +119,9 @@ export class Row extends Component {
               <span className="controls__duration">{duration}</span>
             </div>
             {this.renderTags(tags)}
-          </Link>
-        </label>
-      </li>
+          </Controls>
+        </Label>
+      </Item>
     );
   }
 
@@ -63,7 +138,7 @@ export class Row extends Component {
         this.getCarouselItems(item, index)
       );
 
-      return <ul className="section__carousel">{list}</ul>;
+      return <Carousel className="section__carousel">{list}</Carousel>;
     }
 
     return <p>...loading</p>;
@@ -72,15 +147,35 @@ export class Row extends Component {
   render() {
     const { id, className, title } = this.props;
 
-    console.log("history: ", this.props);
-
     return (
-      <section id={id} className={className}>
-        <h2 className="section__title">{title}</h2>
+      <Section id={id} className={className}>
+        <Title className="section__title">{title}</Title>
         {this.renderCarousel()}
-      </section>
+      </Section>
     );
   }
 }
+
+Row.propTypes = {
+  className: PropTypes.string,
+  data: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string,
+      to: PropTypes.string,
+      title: PropTypes.string,
+      background: PropTypes.shape({
+        src: PropTypes.string.isRequired,
+        alt: PropTypes.string.isRequired,
+      }),
+      age: PropTypes.string,
+      duration: PropTypes.string,
+      tags: PropTypes.arrayOf(PropTypes.string),
+    })
+  ),
+  history: history.isRequired,
+  id: PropTypes.string.isRequired,
+  title: PropTypes.string,
+};
 
 export default Row;

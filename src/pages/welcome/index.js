@@ -6,7 +6,9 @@ export const WelcomePage = () => {
   return (
     <Fragment>
       <Header nav={false} />
-      <ChooseProfile />
+      <main>
+        <ChooseProfile />
+      </main>
     </Fragment>
   );
 };
