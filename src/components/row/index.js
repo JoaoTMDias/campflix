@@ -108,11 +108,25 @@ export class Row extends Component {
             onClick={event => this._onClickOnInput(event, to)}
             onKeyUp={event => this._onKeyUpOnInput(event, to)}
           />
-          <Figure>
-            <img src={background.src} alt={background.alt} />
+          <Figure className="section__item__figure">
+            <div className="section__item__gradient" />
+            <img
+              src={background.src}
+              alt={background.alt}
+              className="section__item__image"
+            />
           </Figure>
           <Controls className="section__item__controls">
-            <figure className="controls__icon" />
+            <figure className="controls__icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="48"
+                height="48"
+                viewBox="0 0 48 48"
+              >
+                <path fill="var(--color-primary)" d="M16 10v28l22-14z" />
+              </svg>
+            </figure>
             <h4 className="controls__title">{title}</h4>
             <div className="controls__metadata">
               <span className="controls__age">{age}</span>

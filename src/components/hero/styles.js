@@ -1,8 +1,10 @@
 import styled from "styled-components";
+import { rem } from "polished";
 
 export const Container = styled.article`
   width: 100%;
-  height: 90vh;
+  height: 70vh;
+  max-height: ${rem("800px")};
   padding: 0 var(--global-padding);
   background: var(--color-black);
   position: relative;
