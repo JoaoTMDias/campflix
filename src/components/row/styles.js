@@ -35,39 +35,45 @@ export const Title = styled.h2`
   }
 `;
 
-export const Carousel = styled.ul`
+export const Carousel = styled.div`
+  overflow: scroll;
   width: 100%;
-  display: grid;
-  grid-template-columns: repeat(
-    auto-fill,
-    minmax(var(--carousel-item-min-width), var(--carousel-item-max-width))
-  );
-  grid-template-rows: ${rem("160px")};
-  grid-column-gap: var(--column-gap, 1.5rem);
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  list-style-type: none;
-  margin: 0;
+  margin-top: calc(var(--column-gap, 1.5rem) * 2.5 * -1);
+`;
+
+export const CarouselInner = styled.ul`
+  margin: calc(var(--column-gap, 1.5rem) * 3) 0;
   padding: 0;
-  z-index: 1;
+  scroll-snap-type: x proximity;
+  white-space: nowrap;
 `;
 
 export const Item = styled.li`
+  --column-gap: 0.5rem;
   --item-scale: 1.4;
   --item-translate-x: calc(
     var(--carousel-item-max-width) - var(--carousel-item-min-width)
   );
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
   align-items: center;
-  transform: scale(1);
+  display: inline-flex;
+  flex-direction: row;
+  height: ${rem("160px")};
+  justify-content: center;
+  margin: 0 var(--column-gap, 1.5rem);
+  scroll-snap-align: start;
   transform-origin: center left;
+  transform: scale(1);
   transition: transform 250ms ease-in-out;
+  width: var(--carousel-item-max-width);
   z-index: 0;
+
+  &:first-child {
+    margin-left: 0;
+  }
+
+  &:last-child {
+    margin-right: 0;
+  }
 
   &:hover,
   &:focus {

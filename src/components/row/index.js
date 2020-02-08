@@ -4,6 +4,7 @@ import * as PropTypes from "prop-types";
 import {
   Title,
   Carousel,
+  CarouselInner,
   Section,
   Item,
   Label,
@@ -152,7 +153,11 @@ export class Row extends Component {
         this.getCarouselItems(item, index)
       );
 
-      return <Carousel className="section__carousel">{list}</Carousel>;
+      return (
+        <Carousel id="section-carousel">
+          <CarouselInner className="section__carousel">{list}</CarouselInner>
+        </Carousel>
+      );
     }
 
     return <p>...loading</p>;
