@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 import { rem } from "polished";
 
 export const Container = styled.div`
@@ -36,35 +37,32 @@ export const Title = styled.h2`
 `;
 
 export const Carousel = styled.div`
-  overflow: scroll;
   width: 100%;
-  margin-top: calc(var(--column-gap, 1.5rem) * 2.5 * -1);
 `;
 
 export const CarouselInner = styled.ul`
-  margin: calc(var(--column-gap, 1.5rem) * 3) 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: var(--column-gap);
   padding: 0;
-  scroll-snap-type: x proximity;
-  white-space: nowrap;
+
+  @media all and (min-width: 50rem) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media all and (min-width: 64rem) {
+    grid-template-columns: repeat(4, 1fr);
+  }
 `;
 
 export const Item = styled.li`
-  --column-gap: 0.5rem;
-  --item-scale: 1.4;
-  --item-translate-x: calc(
-    var(--carousel-item-max-width) - var(--carousel-item-min-width)
-  );
   align-items: center;
   display: inline-flex;
   flex-direction: row;
   height: ${rem("160px")};
   justify-content: center;
-  margin: 0 var(--column-gap, 1.5rem);
-  scroll-snap-align: start;
-  transform-origin: center left;
-  transform: scale(1);
-  transition: transform 250ms ease-in-out;
-  width: var(--carousel-item-max-width);
+  margin: 0;
+  width: 100%;
   z-index: 0;
 
   &:first-child {
@@ -74,29 +72,25 @@ export const Item = styled.li`
   &:last-child {
     margin-right: 0;
   }
-
   &:hover,
   &:focus {
-    transform: scale(var(--item-scale));
+    z-index: 1;
 
     & ~ .section__item {
-      transform: translate3d(var(--item-translate-x), 0, 0);
-    }
-
-    .section__item {
-      &__figure {
-        outline: 2px solid rgba(255, 255, 255, 0.1);
-      }
-
-      &__controls,
-      &__gradient {
-        opacity: 1;
-      }
+      z-index: 0;
     }
   }
 `;
 
-export const Label = styled.label`
+export const Label = styled(Link)`
+  --column-gap: 0.5rem;
+  --item-scale: 1.1;
+  --item-translate-x: calc(
+    var(--carousel-item-max-width) - var(--carousel-item-min-width)
+  );
+  transform-origin: center center;
+  transform: scale(1);
+  transition: transform 250ms ease-in-out;
   width: 100%;
   height: 100%;
   display: flex;
@@ -104,6 +98,21 @@ export const Label = styled.label`
   justify-content: center;
   align-items: center;
   position: relative;
+  text-decoration: none;
+  
+  &:hover,
+  &:focus {
+    transform: scale(var(--item-scale));
+    outline: 2px solid var(--color-white);
+    outline-width: 2px;
+
+    .section__item {
+      &__controls,
+      &__gradient {
+        opacity: 1;
+      }
+    }
+  }
 `;
 
 export const Figure = styled.figure`
@@ -125,7 +134,7 @@ export const Figure = styled.figure`
       bottom: 0;
       left: 0;
       width: 100%;
-      height: 50%;
+      height: 80%;
       z-index: 0;
       background-image: linear-gradient(
         to bottom,
@@ -157,6 +166,7 @@ export const Controls = styled.div`
   padding: 0.5rem 1rem;
   width: 100%;
   height: 100%;
+  color: var(--color-white);
 
   .controls {
     &__icon {

@@ -79,7 +79,10 @@ export const Container = styled.article`
       &:focus {
         background-color: var(--color-white);
         color: var(--color-black);
-        transform: scale(1.2);
+        transform: scale(1.1);
+      }
+
+      &:focus {
         outline: 1px dashed var(--color-focus-light);
         outline-offset: 4px;
       }

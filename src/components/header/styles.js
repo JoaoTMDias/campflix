@@ -85,8 +85,11 @@ export const Container = styled.header`
 
       &:hover,
       &:focus {
-        outline: 1px dashed var(--color-focus-light);
         color: var(--color-link-active);
+      }
+
+      &:focus {
+        outline: 1px dashed var(--color-focus-light);
       }
 
       &--active {

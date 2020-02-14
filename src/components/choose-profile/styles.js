@@ -104,8 +104,6 @@ export const Anchor = styled(Link)`
 
   &:hover,
   &:focus {
-    outline: 2px dashed var(--color-outline);
-
     .profile-link {
       &__figure {
         outline: 2px solid var(--color-white);
@@ -116,5 +114,9 @@ export const Anchor = styled(Link)`
         color: var(--color-white);
       }
     }
+  }
+
+  &:focus {
+    outline: 2px dashed var(--color-outline);
   }
 `;

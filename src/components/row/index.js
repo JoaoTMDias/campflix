@@ -97,18 +97,8 @@ export class Row extends Component {
       <Item
         key={id}
         className="section__item"
-        style={{ "--order": `${index}` }}
       >
-        <Label htmlFor={id}>
-          <input
-            type="radio"
-            id={id}
-            name={name}
-            className="sr-only"
-            value=""
-            onClick={event => this._onClickOnInput(event, to)}
-            onKeyUp={event => this._onKeyUpOnInput(event, to)}
-          />
+        <Label to={to} title={title} className="section__item__link">
           <Figure className="section__item__figure">
             <div className="section__item__gradient" />
             <img
