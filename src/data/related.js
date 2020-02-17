@@ -2,7 +2,7 @@ import { MOVIE_DETAILS } from "../constants/index";
 
 export const RELATED = {
   id: "803a5589-d36a-4e94-a821-1eb32539c896",
-  title: "Because you've watched Black Hawk Down",
+  title: "Top 10 Movies",
   data: [
     {
       id: "c19405b7-8fa8-47d7-a4af-63a5498100f7",

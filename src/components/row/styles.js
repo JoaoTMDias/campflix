@@ -46,12 +46,24 @@ export const CarouselInner = styled.ul`
   grid-gap: var(--column-gap);
   padding: 0;
 
-  @media all and (min-width: 50rem) {
+  @media all and (min-width: ${ rem(`960px`)}) {
     grid-template-columns: repeat(3, 1fr);
   }
-
-  @media all and (min-width: 64rem) {
+  
+  @media all and (min-width: ${ rem(`1288px`)}) {
     grid-template-columns: repeat(4, 1fr);
+  }
+
+  @media all and (min-width: ${ rem(`1336px`)}) {
+    grid-template-columns: repeat(5, 1fr);
+  }
+
+  @media all and (min-width: ${rem(`1616px`)}) {
+    grid-template-columns: repeat(6, 1fr);
+  }
+
+  @media all and (min-width: ${rem(`2272px`)}) {
+    grid-template-columns: repeat(7, 1fr);
   }
 `;
 
@@ -64,6 +76,14 @@ export const Item = styled.li`
   margin: 0;
   width: 100%;
   z-index: 0;
+
+  @media all and (min-width: 40rem) {
+    height: ${rem("180px")};
+  }
+
+  @media all and (min-width: 60rem) {
+    height: ${rem("220px")};
+  }
 
   &:first-child {
     margin-left: 0;
