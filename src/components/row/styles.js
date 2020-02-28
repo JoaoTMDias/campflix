@@ -17,10 +17,15 @@ export const Section = styled.section`
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  padding-top: 0;
-  padding-right: var(--column-gap, 1.5rem);
-  padding-bottom: 0;
-  padding-left: var(--column-gap, 1.5rem);
+  padding: calc(var(--column-gap, 1.5rem) * 2) var(--column-gap, 1.5rem);
+
+  &:first-child {
+    padding-top: 0;
+  }
+
+  &:last-child {
+    padding-bottom: 0;
+  }
 `;
 
 export const Title = styled.h2`
@@ -46,16 +51,12 @@ export const CarouselInner = styled.ul`
   grid-gap: var(--column-gap);
   padding: 0;
 
-  @media all and (min-width: ${ rem(`960px`)}) {
+  @media all and (min-width: ${rem(`960px`)}) {
     grid-template-columns: repeat(3, 1fr);
   }
-  
-  @media all and (min-width: ${ rem(`1288px`)}) {
-    grid-template-columns: repeat(4, 1fr);
-  }
 
-  @media all and (min-width: ${ rem(`1336px`)}) {
-    grid-template-columns: repeat(5, 1fr);
+  @media all and (min-width: ${rem(`1288px`)}) {
+    grid-template-columns: repeat(4, 1fr);
   }
 
   @media all and (min-width: ${rem(`1616px`)}) {
@@ -104,7 +105,7 @@ export const Item = styled.li`
 
 export const Label = styled(Link)`
   --column-gap: 0.5rem;
-  --item-scale: 1.1;
+  --item-scale: 1.05;
   --item-translate-x: calc(
     var(--carousel-item-max-width) - var(--carousel-item-min-width)
   );
@@ -119,7 +120,7 @@ export const Label = styled(Link)`
   align-items: center;
   position: relative;
   text-decoration: none;
-  
+
   &:hover,
   &:focus {
     transform: scale(var(--item-scale));
@@ -183,7 +184,7 @@ export const Controls = styled.div`
   z-index: 1;
   opacity: 0;
   transition: opacity 375ms ease-out;
-  padding: 0.5rem 1rem;
+  padding: 1rem;
   width: 100%;
   height: 100%;
   color: var(--color-white);
@@ -194,6 +195,8 @@ export const Controls = styled.div`
       height: 2rem;
       border-radius: 2rem;
       border: 2px solid var(--color-white);
+      background-color: hsla(0, 100%, 100%, 0.24);
+      backdrop-filter: blur(2px);
       display: flex;
       flex-direction: row;
       justify-content: center;
@@ -203,13 +206,14 @@ export const Controls = styled.div`
     }
 
     &__title {
-      font-size: 0.85rem;
+      font-size: ${rem("16px")};
       width: 100%;
       margin-bottom: 0.125rem;
     }
 
     &__metadata,
     &__tags {
+      margin-top: ${rem("4px")};
       display: flex;
       flex-direction: row;
       justify-content: flex-start;
@@ -217,14 +221,28 @@ export const Controls = styled.div`
       width: 100%;
     }
 
-    &__age,
+    &__vote,
     &__duration {
-      font-size: ${rem("12px")};
+      font-size: ${rem("10px")};
+      border-radius:  ${rem("4px")};
     }
 
-    &__age {
+    &__vote,
+    &__duration,
+    &__tags__item {
+      padding: ${rem("2px")} 0;
+    }
+
+    &__duration {
+      background-color: hsla(0, 0%, 100%, 0.24);
+      text-transform: uppercase;
+      padding: ${rem("2px")} ${rem("8px")};
+    }
+
+    &__vote {
       margin-right: 0.5rem;
     }
+
 
     &__tags {
       &__item {
@@ -233,7 +251,7 @@ export const Controls = styled.div`
         &:after {
           content: "•";
           padding: 0 2px;
-          opacity: 0.2;
+          color: var(--color-white);
         }
 
         &:last-child {

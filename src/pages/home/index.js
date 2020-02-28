@@ -4,8 +4,7 @@ import { Header } from "../../components/header";
 import { Hero } from "../../components/hero";
 import { Row } from "../../components/row";
 import { Container } from "../../components/row/styles";
-import { RELATED } from "../../data/related";
-import { IMoviesList, IUpcomingMoviesList } from "../../data/services/types";
+import { IMovieData, IMoviesList } from "../../data/services/types";
 
 /**
  *
@@ -104,7 +103,7 @@ export class Homepage extends Component {
   /**
    * Checks if a type of data exists
    *
-   * @param {IMoviesList | IUpcomingMoviesList | null} data
+   * @param {IMovieData | null} data
    * @returns {boolean}
    * @memberof Homepage
    */
@@ -127,19 +126,17 @@ export class Homepage extends Component {
    * Renders the top 10 list
    *
    * @param {IMoviesList | null} data
+   * @param {string} id
+   * @param {string} title
+   * @returns
    * @memberof Homepage
    */
-  renderTop10(data) {
+  renderRow(data, id, title) {
     if (this._hasData(data)) {
       const { history } = this.props;
 
       return (
-        <Row
-          id="top-10-movies"
-          title="Top 10 Movies"
-          data={RELATED.data}
-          history={history}
-        />
+        <Row id={id} title={title} data={data.results} history={history} />
       );
     }
 
@@ -148,12 +145,32 @@ export class Homepage extends Component {
 
   render() {
     const { rows } = this.state;
+    const { top10, upcoming, popular } = rows;
     return (
       <div className="layout">
         <Header />
         <main>
           <Hero />
-          <Container>{this.renderTop10(rows.top10)}</Container>
+          <Container>
+            {top10 &&
+              this.renderRow(
+                top10?.data,
+                "0892fa04-3824-41a8-b64b-1cbad8cff026",
+                "Top 10 Movies"
+              )}
+            {popular &&
+              this.renderRow(
+                popular?.data,
+                "4b26bd5c-a08c-44d0-b076-aa57b8f6003a",
+                "Popular Movies"
+              )}
+            {upcoming &&
+              this.renderRow(
+                upcoming?.data,
+                "35d7b358-b39d-4f11-91b9-24431ed66409",
+                "Upcoming Movies"
+              )}
+          </Container>
         </main>
       </div>
     );

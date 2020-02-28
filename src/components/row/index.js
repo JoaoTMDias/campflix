@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { KEYCODES } from "../../helpers";
-import * as PropTypes from "prop-types";
+import { KEYCODES, getGenreName } from "../../helpers";
+import PropTypes from "prop-types";
 import {
   Title,
   Carousel,
@@ -12,24 +12,28 @@ import {
   Figure,
 } from "./styles";
 import { history } from "../../data/react-router.d";
+import * as T from "./row.d";
+import { MOVIE_DETAILS } from "../../constants/index";
+import { IMoviesResult }  from "../../data/services/types";
 
 /**
  * Movies Row
  *
  * @export
  * @class Row
- * @extends {Component}
+ * @extends {Component<T.IRowProps, any>}
  */
 export class Row extends Component {
   /**
    * Renders a list of tags
-   * @param {string[]} tags
+   * @param {number[]} tags
    */
   renderTags(tags) {
     const list = tags.map((tag, index) => {
+      const name = getGenreName(tag);
       return (
         <span key={index} className="controls__tags__item">
-          {tag}
+          {name}
         </span>
       );
     });
@@ -87,11 +91,25 @@ export class Row extends Component {
 
   /**
    *
-   * @param {*} item
-   * @param {*} index
+   * @param {IMoviesResult} item
    */
-  getCarouselItems(item, index) {
-    const { id, name, to, title, background, age, duration, tags } = item;
+  getCarouselItems(item) {
+    const {
+      backdrop_path,
+      genre_ids,
+      id,
+      original_language,
+      overview,
+      title,
+      vote_average,
+    } = item;
+
+    const image = {
+      src: `https://image.tmdb.org/t/p/w342/${backdrop_path}`,
+      srcSet: `https://image.tmdb.org/t/p/w342/${backdrop_path} 1x, https://image.tmdb.org/t/p/w780/${backdrop_path} 2x`
+    }
+
+    const to = `${MOVIE_DETAILS}/${id}`;
 
     return (
       <Item
@@ -102,8 +120,9 @@ export class Row extends Component {
           <Figure className="section__item__figure">
             <div className="section__item__gradient" />
             <img
-              src={background.src}
-              alt={background.alt}
+              {...image}
+              alt={overview}
+              loading="lazy"
               className="section__item__image"
             />
           </Figure>
@@ -120,10 +139,10 @@ export class Row extends Component {
             </figure>
             <h4 className="controls__title">{title}</h4>
             <div className="controls__metadata">
-              <span className="controls__age">{age}</span>
-              <span className="controls__duration">{duration}</span>
+              <span className="controls__vote">{vote_average}</span>
+              <span className="controls__duration">{original_language}</span>
             </div>
-            {this.renderTags(tags)}
+            {genre_ids && this.renderTags(genre_ids)}
           </Controls>
         </Label>
       </Item>
@@ -137,11 +156,10 @@ export class Row extends Component {
    */
   renderCarousel() {
     const { data } = this.props;
+    const hasResults = data?.length > 0;
 
-    if (data) {
-      const list = data.map((item, index) =>
-        this.getCarouselItems(item, index)
-      );
+    if (hasResults) {
+      const list = data.map((item) => this.getCarouselItems(item));
 
       return (
         <Carousel id="section-carousel">
@@ -167,21 +185,32 @@ export class Row extends Component {
 
 Row.propTypes = {
   className: PropTypes.string,
-  data: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      name: PropTypes.string,
-      to: PropTypes.string,
-      title: PropTypes.string,
-      background: PropTypes.shape({
-        src: PropTypes.string.isRequired,
-        alt: PropTypes.string.isRequired,
-      }),
-      age: PropTypes.string,
-      duration: PropTypes.string,
-      tags: PropTypes.arrayOf(PropTypes.string),
+  data: PropTypes.shape({
+    page: PropTypes.number,
+    total_results: PropTypes.number,
+    total_pages: PropTypes.number,
+    results: PropTypes.arrayOf(
+      PropTypes.shape({
+        popularity: PropTypes.number,
+        vote_count: PropTypes.number,
+        video: PropTypes.bool,
+        poster_path: PropTypes.string,
+        id: PropTypes.number,
+        adult: PropTypes.bool,
+        backdrop_path: PropTypes.string,
+        original_language: PropTypes.string,
+        original_title: PropTypes.string,
+        genre_ids: PropTypes.arrayOf(PropTypes.number),
+        title: PropTypes.string,
+        vote_average: PropTypes.number,
+        overview: PropTypes.string,
+        release_date: PropTypes.string
+    })),
+    dates: PropTypes.shape({
+      minimum: PropTypes.string,
+      maximum: PropTypes.string
     })
-  ),
+  }),
   history: history.isRequired,
   id: PropTypes.string.isRequired,
   title: PropTypes.string,
