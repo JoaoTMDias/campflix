@@ -63,14 +63,14 @@ class Movies {
    * Get the primary information about a movie.
    *
    * @param {object} options
-   * @param {string} [options.language]
-   * @param {number} options.movie_id
+   * @param {string} [options.language = "en"]
+   * @param {string} options.movie_id
    * @public
    * @returns {Promise<AxiosResponse<IMovieDetails>>}
    * @memberof Movies
    */
-  getMovieDetails({ language, movie_id }) {
-    const url = `${this.baseUrl}/3/movie/${movie_id}?api_key=${this.apiKey}&language=${language}`;
+  getMovieDetails({ language = "en", movie_id }) {
+    const url = `${this.baseUrl}/${movie_id}?api_key=${this.apiKey}&language=${language}`;
     return axios.get(url);
   }
 }
