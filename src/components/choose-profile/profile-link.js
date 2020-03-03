@@ -8,6 +8,7 @@ export const ProfileLink = ({ id, to, order, image, name, ariaLabel }) => {
       id={id}
       to={to}
       aria-label={ariaLabel}
+      data-testid="profile-link"
       className="profile-link"
       style={{
         "--order": `${order}`,

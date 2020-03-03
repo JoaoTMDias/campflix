@@ -1,10 +1,10 @@
-import { IMovieData } from "../../data/services/types";
+import { IMoviesResult } from "../../data/services/types";
 import * as H from "history";
 
 export interface IRowProps {
-    history: H.History;
+    history?: H.History;
     className?: string;
-    data?: IMovieData;
+    data?: IMoviesResult[];
     id: string;
     title: string;
 }

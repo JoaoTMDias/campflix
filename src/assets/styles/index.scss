@@ -8,6 +8,7 @@
   --color-primary: hsl(359, 78%, 53%);
   --color-white: hsl(360, 33%, 99%);
   --color-black: hsl(15, 40%, 2%);
+  --color-dark-gray: hsl(15, 25%, 10%);
   --body-font-family: "Lato", -apple-system, BlinkMacSystemFont, Open Sans,
     Roboto, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Helvetica Neue,
     sans-serif;
@@ -77,9 +78,25 @@ h6 {
 h2 {
   font-size: 2rem;
 
-  @media all and (min-width: 50rem) {
+  @media all and (min-width: 48rem) {
     font-size: 3.5vw;
   }
+}
+
+h3 {
+  font-size: 1.75rem;
+}
+
+h4 {
+  font-size: 1.5rem;
+}
+
+h5 {
+  font-size: 1.25rem;
+}
+
+h6 {
+  font-size: 1rem;
 }
 
 .layout {

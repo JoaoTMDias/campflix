@@ -24,12 +24,14 @@ const QUALITY = {
  */
 export const DetailsHero: React.FunctionComponent<IMovieDetails> = ({
   title,
+  tagline,
   poster_path,
   backdrop_path,
   release_date,
   runtime,
   original_language,
-  genres
+  genres,
+  production_companies
 
 }) => {
   const poster_src = {
@@ -48,7 +50,7 @@ export const DetailsHero: React.FunctionComponent<IMovieDetails> = ({
    * Renders a list of tags
    * @param {number[]} tags
    */
-  function renderTags() {
+  function _renderTags() {
     const list = genres.map((genre, index) => {
       const name = getGenreName(genre.id);
       return (
@@ -59,6 +61,30 @@ export const DetailsHero: React.FunctionComponent<IMovieDetails> = ({
     });
 
     return <div className="controls__tags">{list}</div>;
+  }
+
+  /**
+   * Renders a list of production companies logos
+   */
+  function _renderProductionCompanies() {
+    const list = production_companies.map((company) => {
+      if (company.logo_path) {
+        return (
+          <img
+            key={company.id}
+            src={`${URL}/w92${company.logo_path}`}
+            width={92}
+            className="hero__company"
+            loading="lazy"
+            alt={company.name}
+          />
+        );
+      }
+
+      return null;
+    });
+
+    return <div className="hero__metadata__row">{list}</div>;
   }
 
   return (
@@ -73,15 +99,18 @@ export const DetailsHero: React.FunctionComponent<IMovieDetails> = ({
         </figure>
         <div className="hero__metadata">
           <h3 className="hero__metadata__title">{`${title} (${year})`}</h3>
-          <p className="hero__metadata__language">{original_language}</p>
-          <p className="hero__metadata__runtime">{`${runtime} minutes`}</p>
-          {genres && renderTags()}
+          <blockquote className="hero__metadata__tagline">&#8220;{tagline}&rdquo;</blockquote>
+          {production_companies && _renderProductionCompanies()}
+          <div className="hero__metadata__row">
+            <p className="hero__metadata__language">{original_language}</p>
+            <p className="hero__metadata__runtime">{`${runtime} minutes`}</p>
+          </div>
+          {genres && _renderTags()}
         </div>
       </div>
       <div role="presentation" className="hero__gradient" />
       <img
         {...backdrop_src}
-        role="presentation"
         width={2048}
         height={1152}
         loading="lazy"

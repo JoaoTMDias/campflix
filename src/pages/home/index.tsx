@@ -4,7 +4,8 @@ import { Header } from "../../components/header";
 import { Hero } from "../../components/hero";
 import { Row } from "../../components/row";
 import { Container } from "../../components/row/styles";
-import { IMovieData, IMoviesList } from "../../data/services/types";
+import { IMoviesResult } from "../../data/services/types";
+import { IHomepageProps, IHomepageState } from "./types.d";
 
 /**
  *
@@ -13,16 +14,14 @@ import { IMovieData, IMoviesList } from "../../data/services/types";
  * @class Homepage
  * @extends {Component}
  */
-export class Homepage extends Component {
-  constructor(props) {
+export class Homepage extends Component<IHomepageProps, IHomepageState> {
+  constructor (props: IHomepageProps) {
     super(props);
 
     this.state = {
-      rows: {
-        top10: null,
-        upcoming: null,
-        popular: null,
-      },
+      top10: null,
+      upcoming: null,
+      popular: null,
     };
   }
 
@@ -33,22 +32,14 @@ export class Homepage extends Component {
   /**
    * Get the Top 10 Movies
    *
-   * @returns {Promise<any>}
    * @memberof Homepage
    */
   async _getTop10Movies() {
     try {
-      const top10 = await Movies.getTopRated({});
+      const results = await Movies.getTopRated({});
+      const top10 = await results.data;
 
-      this.setState(prevState => {
-        return {
-          ...prevState,
-          rows: {
-            ...prevState.rows,
-            top10,
-          },
-        };
-      });
+      this.setState({ top10 });
     } catch (error) {
       console.error("error fetching top 10: ", error);
     }
@@ -61,16 +52,11 @@ export class Homepage extends Component {
    */
   async _getUpcoming() {
     try {
-      const upcoming = await Movies.getUpcoming({});
+      const results = await Movies.getUpcoming({});
+      const upcoming = results.data;
 
-      this.setState(prevState => {
-        return {
-          ...prevState,
-          rows: {
-            ...prevState.rows,
-            upcoming,
-          },
-        };
+      this.setState({
+        upcoming
       });
     } catch (error) {
       console.error("error fetching top 10: ", error);
@@ -84,16 +70,11 @@ export class Homepage extends Component {
    */
   async _getPopular() {
     try {
-      const popular = await Movies.getPopular({});
+      const results = await Movies.getPopular({});
+      const popular = await results.data;
 
-      this.setState(prevState => {
-        return {
-          ...prevState,
-          rows: {
-            ...prevState.rows,
-            popular,
-          },
-        };
+      this.setState({
+        popular
       });
     } catch (error) {
       console.error("error fetching top 10: ", error);
@@ -103,12 +84,12 @@ export class Homepage extends Component {
   /**
    * Checks if a type of data exists
    *
-   * @param {IMovieData | null} data
+   * @param {IMoviesResult[]} data
    * @returns {boolean}
    * @memberof Homepage
    */
-  _hasData(data) {
-    return data && Object.keys(data).length > 0;
+  _hasResults(data: IMoviesResult[]) {
+    return data.length > 0;
   }
 
   /**
@@ -125,18 +106,18 @@ export class Homepage extends Component {
   /**
    * Renders the top 10 list
    *
-   * @param {IMoviesList | null} data
+   * @param {IMoviesResult[] | null} data
    * @param {string} id
    * @param {string} title
-   * @returns
+   * @returns {JSX.Element}
    * @memberof Homepage
    */
-  renderRow(data, id, title) {
-    if (this._hasData(data)) {
+  renderRow(data: IMoviesResult[], id: string, title: string) {
+    if (data && this._hasResults(data)) {
       const { history } = this.props;
 
       return (
-        <Row id={id} title={title} data={data.results} history={history} />
+        <Row id={id} title={title} data={data} history={history} />
       );
     }
 
@@ -144,8 +125,8 @@ export class Homepage extends Component {
   }
 
   render() {
-    const { rows } = this.state;
-    const { top10, upcoming, popular } = rows;
+    const { top10, upcoming, popular } = this.state;
+
     return (
       <div className="layout">
         <Header />
@@ -154,21 +135,21 @@ export class Homepage extends Component {
           <Container>
             {top10 &&
               this.renderRow(
-                top10?.data,
+                top10.results,
                 "0892fa04-3824-41a8-b64b-1cbad8cff026",
-                "Top 10 Movies"
+                "🎖 Great and Magestical"
               )}
             {popular &&
               this.renderRow(
-                popular?.data,
+                popular.results,
                 "4b26bd5c-a08c-44d0-b076-aa57b8f6003a",
-                "Popular Movies"
+                "🔥 So hot right now"
               )}
             {upcoming &&
               this.renderRow(
-                upcoming?.data,
+                upcoming.results,
                 "35d7b358-b39d-4f11-91b9-24431ed66409",
-                "Upcoming Movies"
+                "🎬 Coming next"
               )}
           </Container>
         </main>

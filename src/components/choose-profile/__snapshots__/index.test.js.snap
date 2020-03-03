@@ -1,0 +1,288 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ChooseProfile /> renders without error 1`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <article
+        class="sc-AykKC fQuQwv choose-profile"
+        id="choose-profile"
+      >
+        <h2>
+          Who's watching?
+        </h2>
+        <nav
+          class="choose-profile__content"
+        >
+          <ul
+            class="choose-profile__buttons"
+          >
+            <a
+              aria-label="Choose João's profile"
+              class="sc-AykKD clOgWp profile-link"
+              data-testid="profile-link"
+              href="/home"
+              id="0f04ab1c-1f33-4896-9a82-f08a206f7fbe"
+            >
+              <figure
+                class="profile-link__figure"
+              >
+                <img
+                  alt="Profile picture"
+                  class="profile-link__image"
+                  height="200"
+                  src="profile-1-joao.png"
+                  width="200"
+                />
+              </figure>
+              <h3
+                class="profile-link__name"
+              >
+                João
+              </h3>
+            </a>
+            <a
+              aria-label="Choose Mickael's profile"
+              class="sc-AykKD clOgWp profile-link"
+              data-testid="profile-link"
+              href="/home"
+              id="31f7e325-801d-4305-bd5b-d2d29c8f2ef4"
+            >
+              <figure
+                class="profile-link__figure"
+              >
+                <img
+                  alt="Profile picture"
+                  class="profile-link__image"
+                  height="200"
+                  src="profile-2-joao.png"
+                  width="200"
+                />
+              </figure>
+              <h3
+                class="profile-link__name"
+              >
+                Mickael
+              </h3>
+            </a>
+            <a
+              aria-label="Choose Luis's profile"
+              class="sc-AykKD clOgWp profile-link"
+              data-testid="profile-link"
+              href="/home"
+              id="f32dd5d6-6ad5-4469-b9cf-de6b6517d1f9"
+            >
+              <figure
+                class="profile-link__figure"
+              >
+                <img
+                  alt="Profile picture"
+                  class="profile-link__image"
+                  height="200"
+                  src="profile-3-joao.png"
+                  width="200"
+                />
+              </figure>
+              <h3
+                class="profile-link__name"
+              >
+                Luís
+              </h3>
+            </a>
+            <a
+              aria-label="Choose Celso's profile"
+              class="sc-AykKD clOgWp profile-link"
+              data-testid="profile-link"
+              href="/home"
+              id="462c053e-ec01-44b6-8fee-020dad249e2f"
+            >
+              <figure
+                class="profile-link__figure"
+              >
+                <img
+                  alt="Profile picture"
+                  class="profile-link__image"
+                  height="200"
+                  src="profile-4-joao.png"
+                  width="200"
+                />
+              </figure>
+              <h3
+                class="profile-link__name"
+              >
+                Celso
+              </h3>
+            </a>
+          </ul>
+        </nav>
+      </article>
+    </div>
+  </body>,
+  "container": <div>
+    <article
+      class="sc-AykKC fQuQwv choose-profile"
+      id="choose-profile"
+    >
+      <h2>
+        Who's watching?
+      </h2>
+      <nav
+        class="choose-profile__content"
+      >
+        <ul
+          class="choose-profile__buttons"
+        >
+          <a
+            aria-label="Choose João's profile"
+            class="sc-AykKD clOgWp profile-link"
+            data-testid="profile-link"
+            href="/home"
+            id="0f04ab1c-1f33-4896-9a82-f08a206f7fbe"
+          >
+            <figure
+              class="profile-link__figure"
+            >
+              <img
+                alt="Profile picture"
+                class="profile-link__image"
+                height="200"
+                src="profile-1-joao.png"
+                width="200"
+              />
+            </figure>
+            <h3
+              class="profile-link__name"
+            >
+              João
+            </h3>
+          </a>
+          <a
+            aria-label="Choose Mickael's profile"
+            class="sc-AykKD clOgWp profile-link"
+            data-testid="profile-link"
+            href="/home"
+            id="31f7e325-801d-4305-bd5b-d2d29c8f2ef4"
+          >
+            <figure
+              class="profile-link__figure"
+            >
+              <img
+                alt="Profile picture"
+                class="profile-link__image"
+                height="200"
+                src="profile-2-joao.png"
+                width="200"
+              />
+            </figure>
+            <h3
+              class="profile-link__name"
+            >
+              Mickael
+            </h3>
+          </a>
+          <a
+            aria-label="Choose Luis's profile"
+            class="sc-AykKD clOgWp profile-link"
+            data-testid="profile-link"
+            href="/home"
+            id="f32dd5d6-6ad5-4469-b9cf-de6b6517d1f9"
+          >
+            <figure
+              class="profile-link__figure"
+            >
+              <img
+                alt="Profile picture"
+                class="profile-link__image"
+                height="200"
+                src="profile-3-joao.png"
+                width="200"
+              />
+            </figure>
+            <h3
+              class="profile-link__name"
+            >
+              Luís
+            </h3>
+          </a>
+          <a
+            aria-label="Choose Celso's profile"
+            class="sc-AykKD clOgWp profile-link"
+            data-testid="profile-link"
+            href="/home"
+            id="462c053e-ec01-44b6-8fee-020dad249e2f"
+          >
+            <figure
+              class="profile-link__figure"
+            >
+              <img
+                alt="Profile picture"
+                class="profile-link__image"
+                height="200"
+                src="profile-4-joao.png"
+                width="200"
+              />
+            </figure>
+            <h3
+              class="profile-link__name"
+            >
+              Celso
+            </h3>
+          </a>
+        </ul>
+      </nav>
+    </article>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;

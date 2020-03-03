@@ -14,7 +14,7 @@ import {
 import { history } from "../../data/react-router.d";
 import * as T from "./row.d";
 import { MOVIE_DETAILS } from "../../constants/index";
-import { IMoviesResult }  from "../../data/services/types";
+import { IMoviesResult } from "../../data/services/types";
 
 /**
  * Movies Row
@@ -106,16 +106,13 @@ export class Row extends Component {
 
     const image = {
       src: `https://image.tmdb.org/t/p/w342/${backdrop_path}`,
-      srcSet: `https://image.tmdb.org/t/p/w342/${backdrop_path} 1x, https://image.tmdb.org/t/p/w780/${backdrop_path} 2x`
-    }
+      srcSet: `https://image.tmdb.org/t/p/w342/${backdrop_path} 1x, https://image.tmdb.org/t/p/w780/${backdrop_path} 2x`,
+    };
 
     const to = `${MOVIE_DETAILS}/${id}`;
 
     return (
-      <Item
-        key={id}
-        className="section__item"
-      >
+      <Item key={id} className="section__item">
         <Label to={to} title={title} className="section__item__link">
           <Figure className="section__item__figure">
             <div className="section__item__gradient" />
@@ -139,7 +136,7 @@ export class Row extends Component {
             </figure>
             <h4 className="controls__title">{title}</h4>
             <div className="controls__metadata">
-              <span className="controls__vote">{vote_average}</span>
+              <span className="controls__vote">{`${vote_average}/10`}</span>
               <span className="controls__duration">{original_language}</span>
             </div>
             {genre_ids && this.renderTags(genre_ids)}
@@ -159,7 +156,7 @@ export class Row extends Component {
     const hasResults = data?.length > 0;
 
     if (hasResults) {
-      const list = data.map((item) => this.getCarouselItems(item));
+      const list = data.map(item => this.getCarouselItems(item));
 
       return (
         <Carousel id="section-carousel">
@@ -204,14 +201,15 @@ Row.propTypes = {
         title: PropTypes.string,
         vote_average: PropTypes.number,
         overview: PropTypes.string,
-        release_date: PropTypes.string
-    })),
+        release_date: PropTypes.string,
+      })
+    ),
     dates: PropTypes.shape({
       minimum: PropTypes.string,
-      maximum: PropTypes.string
-    })
+      maximum: PropTypes.string,
+    }),
   }),
-  history: history.isRequired,
+  history: history,
   id: PropTypes.string.isRequired,
   title: PropTypes.string,
 };

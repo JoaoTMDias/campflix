@@ -17,7 +17,7 @@ export const Section = styled.section`
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  padding: calc(var(--column-gap, 1.5rem) * 2) var(--column-gap, 1.5rem);
+  padding: calc(var(--column-gap, 1.5rem) * 2) calc(var(--column-gap, 1.5rem) * 3);
 
   &:first-child {
     padding-top: 0;
