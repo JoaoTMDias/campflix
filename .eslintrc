@@ -1,6 +1,10 @@
 {
 	"parser": "babel-eslint",
-	"extends": ["@feedzai/eslint-config-feedzai-react", "plugin:prettier/recommended"],
+	"extends": [
+		"@feedzai/eslint-config-feedzai-react",
+		"plugin:prettier/recommended",
+		"prettier/react"
+	],
 	"plugins": ["prettier"],
 	"env": {
 		"browser": true

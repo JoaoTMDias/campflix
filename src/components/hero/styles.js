@@ -121,7 +121,8 @@ export const Container = styled.article`
 				height: ${rem("278px")};
 				border-radius: 1rem;
 				box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.12),
-					0px 12px 24px rgba(0, 0, 0, 0.24) 1px 0px 8px 20px rgba(0, 0, 0, 0.12), 0px 12px 8px 16px rgba(0, 0, 0, 0.24);
+					0px 12px 24px rgba(0, 0, 0, 0.24) 1px 0px 8px 20px rgba(0, 0, 0, 0.12),
+					0px 12px 8px 16px rgba(0, 0, 0, 0.24);
 				background-color: var(--color-dark-gray);
 				display: flex;
 			}

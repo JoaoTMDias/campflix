@@ -9,7 +9,7 @@ describe("<Card />", () => {
 		const component = render(
 			<Card id="example-id" title="Example title">
 				<p>Test children</p>
-			</Card>,
+			</Card>
 		);
 
 		expect(component).toMatchSnapshot();
@@ -19,7 +19,7 @@ describe("<Card />", () => {
 		const { findByTestId } = render(
 			<Card id="example-id" title="Example title">
 				<p>Test children</p>
-			</Card>,
+			</Card>
 		);
 
 		const title = await findByTestId("card-title");
@@ -31,7 +31,7 @@ describe("<Card />", () => {
 		const { getAllByTestId } = render(
 			<Card id="example-id" title="Example title">
 				<p data-testid="child-node">Test children</p>
-			</Card>,
+			</Card>
 		);
 
 		const childNode = await getAllByTestId("child-node");
