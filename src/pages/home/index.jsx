@@ -4,18 +4,17 @@ import { Header } from "../../components/header";
 import { Hero } from "../../components/hero";
 import { Row } from "../../components/row";
 import { Container } from "../../components/row/styles";
-import { IMoviesResult } from "../../data/services/types";
+import { IMoviesResult } from "../../data/services/service-types.d";
 import { IHomepageProps, IHomepageState } from "./types.d";
 
 /**
+ * Home page
  *
- *
- * @export
  * @class Homepage
- * @extends {Component}
+ * @extends {React.Component<IHomepageProps, IHomepageState>}
  */
-export class Homepage extends Component<IHomepageProps, IHomepageState> {
-  constructor (props: IHomepageProps) {
+export class Homepage extends Component {
+  constructor(props) {
     super(props);
 
     this.state = {
@@ -56,7 +55,7 @@ export class Homepage extends Component<IHomepageProps, IHomepageState> {
       const upcoming = results.data;
 
       this.setState({
-        upcoming
+        upcoming,
       });
     } catch (error) {
       console.error("error fetching top 10: ", error);
@@ -74,7 +73,7 @@ export class Homepage extends Component<IHomepageProps, IHomepageState> {
       const popular = await results.data;
 
       this.setState({
-        popular
+        popular,
       });
     } catch (error) {
       console.error("error fetching top 10: ", error);
@@ -88,7 +87,7 @@ export class Homepage extends Component<IHomepageProps, IHomepageState> {
    * @returns {boolean}
    * @memberof Homepage
    */
-  _hasResults(data: IMoviesResult[]) {
+  _hasResults(data) {
     return data.length > 0;
   }
 
@@ -112,13 +111,11 @@ export class Homepage extends Component<IHomepageProps, IHomepageState> {
    * @returns {JSX.Element}
    * @memberof Homepage
    */
-  renderRow(data: IMoviesResult[], id: string, title: string) {
+  renderRow(data, id, title) {
     if (data && this._hasResults(data)) {
       const { history } = this.props;
 
-      return (
-        <Row id={id} title={title} data={data} history={history} />
-      );
+      return <Row id={id} title={title} data={data} history={history} />;
     }
 
     return <p>...</p>;

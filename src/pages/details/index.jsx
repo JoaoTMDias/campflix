@@ -4,20 +4,20 @@ import { Header } from "../../components/header";
 import { DetailsHero } from "../../components/hero/details-hero";
 import { Container, Section } from "../../components/row/styles";
 import Card from "../../components/card";
-import Grid, { IGridColumns } from "../../components/grid";
-import { IMovieDetails } from "../../data/services/types";
-import { IDetailsPageProps, IDetailsPageState } from "./types";
+import Grid from "../../components/grid";
 import { Figure } from "./styles";
+
+import { IDetailsPageProps, IDetailsPageState } from "./types.d";
+import "../../data/services/service-types.d";
 
 /**
  * Details Page
  *
- * @export
  * @class DetailsPage
- * @extends {Component<IDetailsPageProps, IDetailsPageState>}
+ * @extends {React.Component<IDetailsPageProps, IDetailsPageState>}
  */
-export class DetailsPage extends Component<IDetailsPageProps, IDetailsPageState>{
-  constructor (props: IDetailsPageProps) {
+export class DetailsPage extends Component {
+  constructor(props) {
     super(props);
 
     this.state = {
@@ -36,7 +36,7 @@ export class DetailsPage extends Component<IDetailsPageProps, IDetailsPageState>
    * @param {string} movie_id
    * @memberof DetailsPage
    */
-  async _getMovieDetails(movie_id: string) {
+  async _getMovieDetails(movie_id) {
     try {
       const results = await Movies.getMovieDetails({
         movie_id,
@@ -62,7 +62,7 @@ export class DetailsPage extends Component<IDetailsPageProps, IDetailsPageState>
    * @returns {boolean}
    * @memberof DetailsPage
    */
-  _hasData(data: IMovieDetails | null) {
+  _hasData(data) {
     return data && Object.keys(data).length > 0;
   }
 
@@ -84,12 +84,12 @@ export class DetailsPage extends Component<IDetailsPageProps, IDetailsPageState>
   render() {
     const { data } = this.state;
 
-    if (data) {
-      const gridColumns: IGridColumns = {
+    if (this._hasData(data)) {
+      const gridColumns = {
         small: 1,
         medium: 2,
-        large: 3
-      }
+        large: 3,
+      };
       return (
         <div className="layout">
           <Header />
@@ -99,9 +99,7 @@ export class DetailsPage extends Component<IDetailsPageProps, IDetailsPageState>
               <Section id="details-content">
                 <Grid columns={gridColumns}>
                   <Card id="overview" title="Description">
-                    <p className="overview">
-                      {data.overview}
-                    </p>
+                    <p className="overview">{data.overview}</p>
                   </Card>
                   <Card id="important-figures" title="Important Figures">
                     <Figure className="details__figure">
@@ -116,11 +114,21 @@ export class DetailsPage extends Component<IDetailsPageProps, IDetailsPageState>
                   <Card id="popularity" title="Popularity">
                     <Figure className="details__figure">
                       <span className="details__figure__title">Votes: </span>
-                      <span className="details__figure__value">{data.vote_count}</span>
+                      <span className="details__figure__value">
+                        {data.vote_count}
+                      </span>
                     </Figure>
                     <Figure className="details__figure">
-                      <span className="details__figure__title">Popularity: </span>
-                      <span className="details__figure__value">{data.popularity} <span role="img" aria-label="Thumbs up emoji"> 👍</span></span>
+                      <span className="details__figure__title">
+                        Popularity:{" "}
+                      </span>
+                      <span className="details__figure__value">
+                        {data.popularity}{" "}
+                        <span role="img" aria-label="Thumbs up emoji">
+                          {" "}
+                          👍
+                        </span>
+                      </span>
                     </Figure>
                   </Card>
                 </Grid>
@@ -131,7 +139,7 @@ export class DetailsPage extends Component<IDetailsPageProps, IDetailsPageState>
       );
     }
 
-    return <p>...</p>
+    return <p>...</p>;
   }
 }
 

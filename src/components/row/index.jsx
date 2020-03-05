@@ -12,16 +12,15 @@ import {
   Figure,
 } from "./styles";
 import { history } from "../../data/react-router.d";
-import * as T from "./row.d";
 import { MOVIE_DETAILS } from "../../constants/index";
-import { IMoviesResult } from "../../data/services/types";
+import { IRowProps } from "./types-row.d";
+import { IMoviesResult } from "../../data/services/service-types.d";
 
 /**
  * Movies Row
  *
- * @export
  * @class Row
- * @extends {Component<T.IRowProps, any>}
+ * @extends {React.Component<IRowProps, any>}
  */
 export class Row extends Component {
   /**

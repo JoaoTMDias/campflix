@@ -1,28 +1,28 @@
 import React from "react";
 import { Container } from "./styles";
-import { IMovieDetails } from "../../data/services/types";
 import { getGenreName } from "../../helpers";
+import "../../data/services/service-types.d";
 
-const URL = "https://image.tmdb.org/t/p"
+const URL = "https://image.tmdb.org/t/p";
 
 const QUALITY = {
   poster: {
     default: `${URL}/w185`,
-    high: `${URL}/w342`
+    high: `${URL}/w342`,
   },
   background: {
     default: `${URL}/w1280`,
-    high: `${URL}/original`
-  }
+    high: `${URL}/original`,
+  },
 };
 
 /**
  * Details Hero component
  *
  * @param {IMovieDetails} props
- * @returns {JSX.Element}
+ * @returns {React.FunctionComponent<IMovieDetails>}
  */
-export const DetailsHero: React.FunctionComponent<IMovieDetails> = ({
+export const DetailsHero = ({
   title,
   tagline,
   poster_path,
@@ -31,8 +31,7 @@ export const DetailsHero: React.FunctionComponent<IMovieDetails> = ({
   runtime,
   original_language,
   genres,
-  production_companies
-
+  production_companies,
 }) => {
   const poster_src = {
     src: `${QUALITY.poster.default}${poster_path}`,
@@ -67,7 +66,7 @@ export const DetailsHero: React.FunctionComponent<IMovieDetails> = ({
    * Renders a list of production companies logos
    */
   function _renderProductionCompanies() {
-    const list = production_companies.map((company) => {
+    const list = production_companies.map(company => {
       if (company.logo_path) {
         return (
           <img
@@ -91,15 +90,13 @@ export const DetailsHero: React.FunctionComponent<IMovieDetails> = ({
     <Container id="details-hero" className="hero">
       <div className="hero__content hero__content--horizontal">
         <figure className="hero__poster">
-          <img
-            {...poster_src}
-            width="185"
-            alt={`Poster for ${title}`}
-          />
+          <img {...poster_src} width="185" alt={`Poster for ${title}`} />
         </figure>
         <div className="hero__metadata">
           <h3 className="hero__metadata__title">{`${title} (${year})`}</h3>
-          <blockquote className="hero__metadata__tagline">&#8220;{tagline}&rdquo;</blockquote>
+          <blockquote className="hero__metadata__tagline">
+            &#8220;{tagline}&rdquo;
+          </blockquote>
           {production_companies && _renderProductionCompanies()}
           <div className="hero__metadata__row">
             <p className="hero__metadata__language">{original_language}</p>

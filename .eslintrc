@@ -1,0 +1,11 @@
+{
+	"parser": "babel-eslint",
+	"extends": ["@feedzai/eslint-config-feedzai-react", "plugin:prettier/recommended"],
+	"plugins": ["prettier"],
+	"env": {
+		"browser": true
+	},
+	"rules": {
+		"no-unused-vars": "off"
+	}
+}
