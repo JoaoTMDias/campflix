@@ -1,0 +1,128 @@
+.section {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: flex-start;
+	padding: calc(var(--column-gap, 1.5rem) * 2) calc(var(--column-gap, 1.5rem) * 3);
+
+	&:first-child {
+		padding-top: 0;
+	}
+
+	&:last-child {
+		padding-bottom: 0;
+	}
+
+	&__title {
+		width: 100%;
+		font-size: rem-calc(12);
+		line-height: 1.25vw;
+		margin-bottom: 1rem;
+		z-index: 0;
+
+		@media all and (min-width: 50rem) {
+			font-size: 1.5rem;
+			font-weight: 400;
+		}
+	}
+
+	&__item {
+		align-items: center;
+		display: inline-flex;
+		flex-direction: row;
+		height: rem-calc(160);
+		justify-content: center;
+		margin: 0;
+		width: 100%;
+		z-index: 0;
+
+		@media all and (min-width: 40rem) {
+			height: rem-calc(180);
+		}
+
+		@media all and (min-width: 60rem) {
+			height: rem-calc(220);
+		}
+
+		&:first-child {
+			margin-left: 0;
+		}
+
+		&:last-child {
+			margin-right: 0;
+		}
+		&:hover,
+		&:focus {
+			z-index: 1;
+
+			& ~ .section__item {
+				z-index: 0;
+			}
+		}
+		&__link {
+			--column-gap: 0.5rem;
+			--item-scale: 1.05;
+			--item-translate-x: calc(var(--carousel-item-max-width) - var(--carousel-item-min-width));
+			transform-origin: center center;
+			transform: scale(1);
+			transition: transform 250ms ease-in-out;
+			width: 100%;
+			height: 100%;
+			display: flex;
+			flex-direction: row;
+			justify-content: center;
+			align-items: center;
+			position: relative;
+			text-decoration: none;
+
+			&:hover,
+			&:focus {
+				transform: scale(var(--item-scale));
+				outline: 2px solid var(--color-white);
+				outline-width: 2px;
+
+				.section__item__gradient,
+				.controls {
+					opacity: 1;
+				}
+			}
+		}
+
+		&__figure {
+			width: 100%;
+			height: 100%;
+			z-index: 0;
+			position: absolute;
+			top: 0;
+			left: 0;
+			background-color: var(--color-background);
+			margin: 0;
+			padding: 0;
+			outline: 2px solid rgba(255, 255, 255, 0);
+			transition: outline 250ms ease-in-out;
+
+			.section__item {
+				&__gradient {
+					position: absolute;
+					bottom: 0;
+					left: 0;
+					width: 100%;
+					height: 80%;
+					z-index: 0;
+					background-image: linear-gradient(to bottom, hsla(15, 40%, 2%, 0), hsla(15, 40%, 2%, 1));
+					opacity: 0;
+					transition: opacity 125ms ease-out;
+				}
+
+				&__image {
+					width: 100%;
+					height: 100%;
+					object-fit: cover;
+					object-position: center center;
+					z-index: 1;
+				}
+			}
+		}
+	}
+}

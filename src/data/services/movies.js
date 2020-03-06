@@ -1,5 +1,6 @@
+/* eslint-disable no-unused-vars */
 import axios, { AxiosResponse } from "axios";
-import { IMoviesList, IMovieDetails, IUpcomingMoviesList } from "./service-types.d";
+import { IMoviesList, IMovieDetails, IUpcomingMoviesList } from "./types.d";
 
 /**
  * Handles the data fetching of different types of movies lists
@@ -24,6 +25,7 @@ class Movies {
 	 */
 	getTopRated({ language = "en-US", page = 1 }) {
 		const url = `${this.baseUrl}/top_rated?api_key=${this.apiKey}&language=${language}&page=${page}`;
+
 		return axios.get(url);
 	}
 
@@ -41,6 +43,7 @@ class Movies {
 	 */
 	getUpcoming({ language = "en-US", page = 1 }) {
 		const url = `${this.baseUrl}/upcoming?api_key=${this.apiKey}&language=${language}&page=${page}`;
+
 		return axios.get(url);
 	}
 
@@ -56,6 +59,7 @@ class Movies {
 	 */
 	getPopular({ language = "en-US", page = 1 }) {
 		const url = `${this.baseUrl}/popular?api_key=${this.apiKey}&language=${language}&page=${page}`;
+
 		return axios.get(url);
 	}
 
@@ -71,6 +75,7 @@ class Movies {
 	 */
 	getMovieDetails({ language = "en", movie_id }) {
 		const url = `${this.baseUrl}/${movie_id}?api_key=${this.apiKey}&language=${language}`;
+
 		return axios.get(url);
 	}
 }

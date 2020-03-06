@@ -1,10 +1,11 @@
 import React from "react";
-import { Anchor } from "./styles";
+import { Link } from "react-router-dom";
 
 export const ProfileLink = ({ id, to, order, image, name, ariaLabel }) => {
 	const { src, alt } = image;
+
 	return (
-		<Anchor
+		<Link
 			id={id}
 			to={to}
 			aria-label={ariaLabel}
@@ -18,6 +19,6 @@ export const ProfileLink = ({ id, to, order, image, name, ariaLabel }) => {
 				<img className="profile-link__image" src={src} width={200} height={200} alt={alt} />
 			</figure>
 			<h3 className="profile-link__name">{name}</h3>
-		</Anchor>
+		</Link>
 	);
 };

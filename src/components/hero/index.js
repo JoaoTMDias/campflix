@@ -1,10 +1,9 @@
 import React from "react";
-import { Container } from "./styles";
 import logo from "../../assets/images/the-witcher.webp";
 
 export const Hero = () => {
 	return (
-		<Container id="hero" className="hero">
+		<article id="hero" className="hero">
 			<div className="hero__content">
 				<figure className="hero__logo">
 					<img src={logo} width={304} alt="The Witcher logo" />
@@ -41,7 +40,7 @@ export const Hero = () => {
 				className="hero__background"
 				alt="The witcher background"
 			/>
-		</Container>
+		</article>
 	);
 };
 

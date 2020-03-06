@@ -1,0 +1,26 @@
+.carousel {
+	width: 100%;
+
+	&__inner {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		grid-gap: var(--column-gap);
+		padding: 0;
+
+		@media all and (min-width: #{rem-calc(960)}) {
+			grid-template-columns: repeat(3, 1fr);
+		}
+
+		@media all and (min-width: #{rem-calc(1288)}) {
+			grid-template-columns: repeat(4, 1fr);
+		}
+
+		@media all and (min-width: #{rem-calc(1616)}) {
+			grid-template-columns: repeat(6, 1fr);
+		}
+
+		@media all and (min-width: #{rem-calc(2272)}) {
+			grid-template-columns: repeat(7, 1fr);
+		}
+	}
+}

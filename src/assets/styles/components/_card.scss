@@ -1,8 +1,6 @@
-import styled from "styled-components";
-
-export const Article = styled.article`
+.card {
 	width: 100%;
-	background-color: hsl(0, 0%, 100%, 0.1);
+	background-color: hsla(0, 0%, 100%, 0.1);
 	border-radius: var(--global-margin);
 	margin: calc(var(--global-margin) * 2) auto;
 	padding: var(--global-margin);
@@ -18,10 +16,10 @@ export const Article = styled.article`
 	@media all and (min-width: 64rem) {
 		padding: calc(var(--global-margin) * 2);
 	}
-`;
 
-export const CardTitle = styled.h3`
-	font-size: calc(1rem * 0.75);
-	text-transform: uppercase;
-	color: hsla(0, 0%, 100%, 0.4);
-`;
+	&__title {
+		font-size: calc(1rem * 0.75);
+		text-transform: uppercase;
+		color: hsla(0, 0%, 100%, 0.4);
+	}
+}

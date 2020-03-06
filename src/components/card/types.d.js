@@ -1,4 +1,4 @@
-import { any, string } from "prop-types";
+import { string, oneOfType, node, arrayOf } from "prop-types";
 
 /**
  * @typedef {object} ICardProps
@@ -6,8 +6,8 @@ import { any, string } from "prop-types";
  * @property {string} title
  */
 
-export const PropTypes = {
-	children: any,
+export const ICardPropTypes = {
+	children: oneOfType([arrayOf(node), node]).isRequired,
 	id: string,
 	title: string,
 };

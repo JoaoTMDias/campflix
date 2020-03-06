@@ -1,9 +1,8 @@
 import React from "react";
-import { Container } from "./styles";
 
 export const Header = ({ nav }) => {
 	return (
-		<Container id="header" data-testid="component-header" className="header">
+		<header id="header" data-testid="component-header" className="header">
 			<figure id="header-class" className="header__figure">
 				<svg className="header__logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 24">
 					<path
@@ -43,7 +42,7 @@ export const Header = ({ nav }) => {
 					</ul>
 				</nav>
 			)}
-		</Container>
+		</header>
 	);
 };
 

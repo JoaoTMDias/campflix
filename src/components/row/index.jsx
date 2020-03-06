@@ -1,11 +1,10 @@
+/* eslint-disable no-unused-vars */
 import React, { Component } from "react";
-import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 import { KEYCODES, getGenreName } from "../../helpers";
-import { history } from "../../data/react-router.d";
 import { MOVIE_DETAILS } from "../../constants/index";
-import { IMoviesResult } from "../../data/services/service-types.d";
-import { Title, Carousel, CarouselInner, Section, Item, Label, Controls, Figure } from "./styles";
-import { IRowProps } from "./types-row.d";
+import { IMoviesResult } from "../../data/services/types.d";
+import { IRowProps, IRowPropTypes } from "./types.d";
 
 /**
  * Movies Row
@@ -14,23 +13,7 @@ import { IRowProps } from "./types-row.d";
  * @extends {React.Component<IRowProps, any>}
  */
 export class Row extends Component {
-	/**
-	 * Renders a list of tags
-	 * @param {number[]} tags
-	 */
-	renderTags(tags) {
-		const list = tags.map((tag, index) => {
-			const name = getGenreName(tag);
-
-			return (
-				<span key={index} className="controls__tags__item">
-					{name}
-				</span>
-			);
-		});
-
-		return <div className="controls__tags">{list}</div>;
-	}
+	static propTypes = IRowPropTypes;
 
 	/**
 	 * Handles the click on Input
@@ -81,8 +64,10 @@ export class Row extends Component {
 	}
 
 	/**
+	 * Returns the items of the carousel
 	 *
 	 * @param {IMoviesResult} item
+	 * @returns {JSX.Element}
 	 */
 	getCarouselItems(item) {
 		const { backdrop_path, genre_ids, id, original_language, overview, title, vote_average } = item;
@@ -95,13 +80,13 @@ export class Row extends Component {
 		const to = `${MOVIE_DETAILS}/${id}`;
 
 		return (
-			<Item key={id} className="section__item">
-				<Label to={to} title={title} className="section__item__link">
-					<Figure className="section__item__figure">
-						<div className="section__item__gradient" />
+			<li key={id} className="section__item">
+				<Link to={to} title={title} className="section__item__link">
+					<figure className="section__item__figure">
+						<div className="section__item__gradient" role="presentation" />
 						<img {...image} alt={overview} loading="lazy" className="section__item__image" />
-					</Figure>
-					<Controls className="section__item__controls">
+					</figure>
+					<div className="controls">
 						<figure className="controls__icon">
 							<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
 								<path fill="var(--color-primary)" d="M16 10v28l22-14z" />
@@ -113,10 +98,30 @@ export class Row extends Component {
 							<span className="controls__duration">{original_language}</span>
 						</div>
 						{genre_ids && this.renderTags(genre_ids)}
-					</Controls>
-				</Label>
-			</Item>
+					</div>
+				</Link>
+			</li>
 		);
+	}
+
+	/**
+	 * Renders a list of tags
+	 *
+	 * @param {number[]} tags
+	 * @returns {JSX.Element}
+	 */
+	renderTags(tags) {
+		const list = tags?.map((tag, index) => {
+			const name = getGenreName(tag);
+
+			return (
+				<span key={index} className="controls__tags__item">
+					{name}
+				</span>
+			);
+		});
+
+		return <div className="controls__tags">{list}</div>;
 	}
 
 	/**
@@ -126,15 +131,14 @@ export class Row extends Component {
 	 */
 	renderCarousel() {
 		const { data } = this.props;
-		const hasResults = data?.length > 0;
 
-		if (hasResults) {
-			const list = data.map(item => this.getCarouselItems(item));
+		if (data.length > 0) {
+			const list = data?.map(item => this.getCarouselItems(item));
 
 			return (
-				<Carousel id="section-carousel">
-					<CarouselInner className="section__carousel">{list}</CarouselInner>
-				</Carousel>
+				<div id="section-carousel" className="carousel">
+					<ul className="carousel__inner">{list}</ul>
+				</div>
 			);
 		}
 
@@ -143,48 +147,15 @@ export class Row extends Component {
 
 	render() {
 		const { id, className, title } = this.props;
+		const classes = `section ${className}`;
 
 		return (
-			<Section id={id} className={className}>
-				<Title className="section__title">{title}</Title>
+			<section id={id} className={classes}>
+				<h2 className="section__title">{title}</h2>
 				{this.renderCarousel()}
-			</Section>
+			</section>
 		);
 	}
 }
-
-Row.propTypes = {
-	className: PropTypes.string,
-	data: PropTypes.shape({
-		page: PropTypes.number,
-		total_results: PropTypes.number,
-		total_pages: PropTypes.number,
-		results: PropTypes.arrayOf(
-			PropTypes.shape({
-				popularity: PropTypes.number,
-				vote_count: PropTypes.number,
-				video: PropTypes.bool,
-				poster_path: PropTypes.string,
-				id: PropTypes.number,
-				adult: PropTypes.bool,
-				backdrop_path: PropTypes.string,
-				original_language: PropTypes.string,
-				original_title: PropTypes.string,
-				genre_ids: PropTypes.arrayOf(PropTypes.number),
-				title: PropTypes.string,
-				vote_average: PropTypes.number,
-				overview: PropTypes.string,
-				release_date: PropTypes.string,
-			})
-		),
-		dates: PropTypes.shape({
-			minimum: PropTypes.string,
-			maximum: PropTypes.string,
-		}),
-	}),
-	history: history,
-	id: PropTypes.string.isRequired,
-	title: PropTypes.string,
-};
 
 export default Row;

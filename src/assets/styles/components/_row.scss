@@ -1,0 +1,10 @@
+.row {
+	&__container {
+		transform: translateY(-3rem);
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-start;
+		align-items: flex-start;
+		z-index: 1;
+	}
+}

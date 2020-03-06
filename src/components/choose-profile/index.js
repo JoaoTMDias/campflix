@@ -1,7 +1,6 @@
 import React from "react";
-import { Container } from "./styles";
-import { ProfileLink } from "./profile-link";
 import { USERS } from "../../data/users";
+import { ProfileLink } from "./profile-link";
 
 export const ChooseProfile = () => {
 	/**
@@ -21,6 +20,7 @@ export const ChooseProfile = () => {
 				ariaLabel={user.label}
 			/>
 		));
+
 		return (
 			<ul
 				className="choose-profile__buttons"
@@ -34,11 +34,11 @@ export const ChooseProfile = () => {
 	}
 
 	return (
-		<Container id="choose-profile" className="choose-profile">
+		<article id="choose-profile" className="choose-profile">
 			<h2>Who's watching?</h2>
 
 			<nav className="choose-profile__content">{renderProfileLinks()}</nav>
-		</Container>
+		</article>
 	);
 };
 

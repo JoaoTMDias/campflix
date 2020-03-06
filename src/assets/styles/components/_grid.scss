@@ -1,0 +1,14 @@
+.grid__container {
+	--columns: var(--columns-small);
+	display: grid;
+	grid-template-columns: repeat(var(--columns), 1fr);
+	grid-gap: var(--column-gap);
+
+	@media all and (min-width: 48rem) {
+		--columns: var(--columns-medium);
+	}
+
+	@media all and (min-width: 87.5rem) {
+		--columns: var(--columns-large);
+	}
+}

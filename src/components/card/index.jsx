@@ -1,6 +1,6 @@
+/* eslint-disable no-unused-vars */
 import React from "react";
-import { Article, CardTitle } from "./styles";
-import { PropTypes, ICardProps } from "./types.d";
+import { ICardProps, ICardPropTypes } from "./types.d";
 
 /**
  * Card Component
@@ -11,15 +11,15 @@ export const Card = ({ id, title, children }) => {
 	const titleId = `${id}-title`;
 
 	return (
-		<Article id={id} className="card" data-testid="card" aria-describedby={titleId}>
-			<CardTitle id={titleId} className="card__title" data-testid="card-title">
+		<article id={id} className="card" data-testid="card" aria-describedby={titleId}>
+			<h3 id={titleId} className="card__title" data-testid="card-title">
 				{title}
-			</CardTitle>
+			</h3>
 			{children}
-		</Article>
+		</article>
 	);
 };
 
-Card.propTypes = PropTypes;
+Card.propTypes = ICardPropTypes;
 
 export default Card;

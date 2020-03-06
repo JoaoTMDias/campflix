@@ -1,14 +1,12 @@
+/* eslint-disable no-unused-vars */
 import React, { Component } from "react";
 import Movies from "../../data/services/movies";
 import { Header } from "../../components/header";
 import { DetailsHero } from "../../components/hero/details-hero";
-import { Container, Section } from "../../components/row/styles";
 import Card from "../../components/card";
 import Grid from "../../components/grid";
-import { Figure } from "./styles";
-
-import { IDetailsPageProps, IDetailsPageState } from "./types.d";
-import "../../data/services/service-types.d";
+import { IDetailsPageProps, IDetailsPageState, PropTypes } from "./types.d";
+import "../../data/services/types.d";
 
 /**
  * Details Page
@@ -17,6 +15,8 @@ import "../../data/services/service-types.d";
  * @extends {React.Component<IDetailsPageProps, IDetailsPageState>}
  */
 export class DetailsPage extends Component {
+	static propTypes = PropTypes;
+
 	constructor(props) {
 		super(props);
 
@@ -96,28 +96,28 @@ export class DetailsPage extends Component {
 					<Header />
 					<main>
 						<DetailsHero {...data} />
-						<Container>
-							<Section id="details-content">
+						<div className="row__container">
+							<section id="details-content" className="section">
 								<Grid columns={gridColumns}>
 									<Card id="overview" title="Description">
 										<p className="overview">{data.overview}</p>
 									</Card>
 									<Card id="important-figures" title="Important Figures">
-										<Figure className="details__figure">
+										<h4 className="details__figure">
 											<span className="details__figure__title">Budget: </span>
 											<span className="details__figure__value">{`$ ${data.budget}`}</span>
-										</Figure>
-										<Figure className="details__figure">
+										</h4>
+										<h4 className="details__figure">
 											<span className="details__figure__title">Revenue: </span>
 											<span className="details__figure__value">{`$ ${data.revenue}`}</span>
-										</Figure>
+										</h4>
 									</Card>
 									<Card id="popularity" title="Popularity">
-										<Figure className="details__figure">
+										<h4 className="details__figure">
 											<span className="details__figure__title">Votes: </span>
 											<span className="details__figure__value">{data.vote_count}</span>
-										</Figure>
-										<Figure className="details__figure">
+										</h4>
+										<h4 className="details__figure">
 											<span className="details__figure__title">Popularity: </span>
 											<span className="details__figure__value">
 												{data.popularity}{" "}
@@ -126,11 +126,11 @@ export class DetailsPage extends Component {
 													👍
 												</span>
 											</span>
-										</Figure>
+										</h4>
 									</Card>
 								</Grid>
-							</Section>
-						</Container>
+							</section>
+						</div>
 					</main>
 				</div>
 			);

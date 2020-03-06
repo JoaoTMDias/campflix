@@ -1,11 +1,11 @@
+/* eslint-disable no-unused-vars */
 import React, { Component } from "react";
 import Movies from "../../data/services/movies";
 import { Header } from "../../components/header";
 import { Hero } from "../../components/hero";
 import { Row } from "../../components/row";
-import { Container } from "../../components/row/styles";
-import { IMoviesResult } from "../../data/services/service-types.d";
-import { IHomepageProps, IHomepageState } from "./types.d";
+import { IMoviesResult } from "../../data/services/types.d";
+import { IHomepageProps, IHomepageState, PropTypes } from "./types.d";
 
 /**
  * Home page
@@ -14,6 +14,8 @@ import { IHomepageProps, IHomepageState } from "./types.d";
  * @extends {React.Component<IHomepageProps, IHomepageState>}
  */
 export class Homepage extends Component {
+	static propTypes = PropTypes;
+
 	constructor(props) {
 		super(props);
 
@@ -129,7 +131,7 @@ export class Homepage extends Component {
 				<Header />
 				<main>
 					<Hero />
-					<Container>
+					<div className="row__container">
 						{top10 &&
 							this.renderRow(
 								top10.results,
@@ -144,7 +146,7 @@ export class Homepage extends Component {
 							)}
 						{upcoming &&
 							this.renderRow(upcoming.results, "35d7b358-b39d-4f11-91b9-24431ed66409", "🎬 Coming next")}
-					</Container>
+					</div>
 				</main>
 			</div>
 		);

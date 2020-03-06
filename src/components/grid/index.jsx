@@ -1,7 +1,6 @@
-// Libraries
-import * as React from "react";
-import { GridContainer } from "./styles";
-import "./types.d";
+/* eslint-disable no-unused-vars */
+import React from "react";
+import { IGridPropTypes, IGridProps } from "./types.d";
 
 /**
  * Grid component
@@ -13,10 +12,19 @@ const Grid = ({ columns, children }) => {
 	const { small, medium, large } = columns;
 
 	return (
-		<GridContainer small={small} medium={medium} large={large}>
+		<div
+			className="grid__container"
+			style={{
+				"--columns-small": small,
+				"--columns-medium": medium,
+				"--columns-large": large,
+			}}
+		>
 			{children}
-		</GridContainer>
+		</div>
 	);
 };
+
+Grid.propTypes = IGridPropTypes;
 
 export default React.memo(Grid);

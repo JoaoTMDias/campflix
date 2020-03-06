@@ -1,10 +1,11 @@
-import * as H from "history";
-import "../../data/services/service-types.d";
+import { History } from "history"; // eslint-disable-line no-unused-vars
+import { history } from "../../data/react-router.d";
+import "../../data/services/types.d";
 
 /**
  * @typedef {object} IHomepageProps
  *
- * @property {H.History} history
+ * @property {History} history
  */
 
 /**
@@ -14,3 +15,7 @@ import "../../data/services/service-types.d";
  * @property {IUpcomingMoviesList | null} upcoming
  * @property {IMoviesList | null} popular
  */
+
+export const PropTypes = {
+	history,
+};

@@ -1,7 +1,8 @@
+/* eslint-disable no-unused-vars */
 import React from "react";
 import { getGenreName } from "../../helpers";
-import { Container } from "./styles";
-import "../../data/services/service-types.d";
+import "../../data/services/types.d";
+import { IMovieDetailsPropTypes, IMovieDetails } from "../../data/services/types.d";
 
 const URL = "https://image.tmdb.org/t/p";
 
@@ -47,10 +48,12 @@ export const DetailsHero = ({
 
 	/**
 	 * Renders a list of tags
+	 *
 	 * @param {number[]} tags
+	 * @returns {JSX.Element}
 	 */
 	function _renderTags() {
-		const list = genres.map((genre, index) => {
+		const list = genres?.map((genre, index) => {
 			const name = getGenreName(genre.id);
 
 			return (
@@ -65,9 +68,11 @@ export const DetailsHero = ({
 
 	/**
 	 * Renders a list of production companies logos
+	 *
+	 * @returns {JSX.Element}
 	 */
 	function _renderProductionCompanies() {
-		const list = production_companies.map(company => {
+		const list = production_companies?.map(company => {
 			if (company.logo_path) {
 				return (
 					<img
@@ -88,7 +93,7 @@ export const DetailsHero = ({
 	}
 
 	return (
-		<Container id="details-hero" className="hero">
+		<article id="details-hero" className="hero">
 			<div className="hero__content hero__content--horizontal">
 				<figure className="hero__poster">
 					<img {...poster_src} width="185" alt={`Poster for ${title}`} />
@@ -113,8 +118,10 @@ export const DetailsHero = ({
 				className="hero__background"
 				alt="The witcher background"
 			/>
-		</Container>
+		</article>
 	);
 };
+
+DetailsHero.propTypes = IMovieDetailsPropTypes;
 
 export default DetailsHero;
