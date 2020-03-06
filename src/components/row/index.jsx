@@ -132,8 +132,8 @@ export class Row extends Component {
 	renderCarousel() {
 		const { data } = this.props;
 
-		if (data.length > 0) {
-			const list = data?.map(item => this.getCarouselItems(item));
+		if (data?.length > 0) {
+			const list = data.map(item => this.getCarouselItems(item));
 
 			return (
 				<div id="section-carousel" className="carousel">

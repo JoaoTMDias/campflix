@@ -1,47 +1,41 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Card /> renders without error 1`] = `
+exports[`<Grid /> renders without error 1`] = `
 Object {
   "asFragment": [Function],
   "baseElement": <body>
     <div>
-      <article
-        aria-describedby="example-id-title"
-        class="card"
-        data-testid="card"
-        id="example-id"
+      <div
+        class="grid__container"
+        data-testid="grid-container"
       >
-        <h3
-          class="card__title"
-          data-testid="card-title"
-          id="example-id-title"
-        >
-          Example title
-        </h3>
-        <p>
-          Test children
-        </p>
-      </article>
+        <div>
+          1
+        </div>
+        <div>
+          2
+        </div>
+        <div>
+          3
+        </div>
+      </div>
     </div>
   </body>,
   "container": <div>
-    <article
-      aria-describedby="example-id-title"
-      class="card"
-      data-testid="card"
-      id="example-id"
+    <div
+      class="grid__container"
+      data-testid="grid-container"
     >
-      <h3
-        class="card__title"
-        data-testid="card-title"
-        id="example-id-title"
-      >
-        Example title
-      </h3>
-      <p>
-        Test children
-      </p>
-    </article>
+      <div>
+        1
+      </div>
+      <div>
+        2
+      </div>
+      <div>
+        3
+      </div>
+    </div>
   </div>,
   "debug": [Function],
   "findAllByAltText": [Function],

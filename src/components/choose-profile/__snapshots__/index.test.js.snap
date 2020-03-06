@@ -6,7 +6,7 @@ Object {
   "baseElement": <body>
     <div>
       <article
-        class="sc-AykKC fQuQwv choose-profile"
+        class="choose-profile"
         id="choose-profile"
       >
         <h2>
@@ -20,7 +20,7 @@ Object {
           >
             <a
               aria-label="Choose João's profile"
-              class="sc-AykKD clOgWp profile-link"
+              class="profile-link"
               data-testid="profile-link"
               href="/home"
               id="0f04ab1c-1f33-4896-9a82-f08a206f7fbe"
@@ -44,7 +44,7 @@ Object {
             </a>
             <a
               aria-label="Choose Mickael's profile"
-              class="sc-AykKD clOgWp profile-link"
+              class="profile-link"
               data-testid="profile-link"
               href="/home"
               id="31f7e325-801d-4305-bd5b-d2d29c8f2ef4"
@@ -68,7 +68,7 @@ Object {
             </a>
             <a
               aria-label="Choose Luis's profile"
-              class="sc-AykKD clOgWp profile-link"
+              class="profile-link"
               data-testid="profile-link"
               href="/home"
               id="f32dd5d6-6ad5-4469-b9cf-de6b6517d1f9"
@@ -92,7 +92,7 @@ Object {
             </a>
             <a
               aria-label="Choose Celso's profile"
-              class="sc-AykKD clOgWp profile-link"
+              class="profile-link"
               data-testid="profile-link"
               href="/home"
               id="462c053e-ec01-44b6-8fee-020dad249e2f"
@@ -121,7 +121,7 @@ Object {
   </body>,
   "container": <div>
     <article
-      class="sc-AykKC fQuQwv choose-profile"
+      class="choose-profile"
       id="choose-profile"
     >
       <h2>
@@ -135,7 +135,7 @@ Object {
         >
           <a
             aria-label="Choose João's profile"
-            class="sc-AykKD clOgWp profile-link"
+            class="profile-link"
             data-testid="profile-link"
             href="/home"
             id="0f04ab1c-1f33-4896-9a82-f08a206f7fbe"
@@ -159,7 +159,7 @@ Object {
           </a>
           <a
             aria-label="Choose Mickael's profile"
-            class="sc-AykKD clOgWp profile-link"
+            class="profile-link"
             data-testid="profile-link"
             href="/home"
             id="31f7e325-801d-4305-bd5b-d2d29c8f2ef4"
@@ -183,7 +183,7 @@ Object {
           </a>
           <a
             aria-label="Choose Luis's profile"
-            class="sc-AykKD clOgWp profile-link"
+            class="profile-link"
             data-testid="profile-link"
             href="/home"
             id="f32dd5d6-6ad5-4469-b9cf-de6b6517d1f9"
@@ -207,7 +207,7 @@ Object {
           </a>
           <a
             aria-label="Choose Celso's profile"
-            class="sc-AykKD clOgWp profile-link"
+            class="profile-link"
             data-testid="profile-link"
             href="/home"
             id="462c053e-ec01-44b6-8fee-020dad249e2f"

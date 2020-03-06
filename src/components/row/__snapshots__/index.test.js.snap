@@ -6,11 +6,11 @@ Object {
   "baseElement": <body>
     <div>
       <section
-        class="sc-AykKD epIWTT"
+        class="section undefined"
         id="example-id"
       >
         <h2
-          class="sc-AykKE kfVnRE section__title"
+          class="section__title"
         >
           Example title
         </h2>
@@ -22,11 +22,11 @@ Object {
   </body>,
   "container": <div>
     <section
-      class="sc-AykKD epIWTT"
+      class="section undefined"
       id="example-id"
     >
       <h2
-        class="sc-AykKE kfVnRE section__title"
+        class="section__title"
       >
         Example title
       </h2>

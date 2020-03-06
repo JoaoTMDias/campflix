@@ -3,7 +3,7 @@ import "../../data/services/types.d";
 import { History } from "history";
 import { arrayOf, shape, string } from "prop-types";
 import { history } from "../../data/react-router.d";
-import { IMoviesResultPropTypes } from "../../data/services/types.d";
+import { IMoviesResultPropTypes, IMoviesResult } from "../../data/services/types.d";
 
 /**
  * @typedef {object} IRowProps

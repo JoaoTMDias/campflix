@@ -14,6 +14,7 @@ const Grid = ({ columns, children }) => {
 	return (
 		<div
 			className="grid__container"
+			data-testid="grid-container"
 			style={{
 				"--columns-small": small,
 				"--columns-medium": medium,
